@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Ex8 {
     public static final int INITIALIZE = 0;
     public static final int ARRAY_SIZE = 40;
-    public static final int ARRAY_SIZE15 = 15;
     public static final int STOP_CONDITION2 = 2;
     public static final int STOP_CONDITION4 = 4;
+    public static final char SPACE = ' ';
 
     public static void main(String[] args) {
         String[] userInput = inputAttempts();
@@ -24,19 +24,26 @@ public class Ex8 {
 
     public static String[] inputAttempts(){
         Scanner scanner = new Scanner(System.in);
-        String[] inputUser = new String[ARRAY_SIZE15];
+        String saveValue = "";
+        String getString = "";
         String inputString;
         int indexOfArray = INITIALIZE , countOfString = INITIALIZE;
         do {
             System.out.println("Enter Strings until the length smaller than 4");
             inputString = scanner.nextLine();
-            inputUser[indexOfArray] = inputString;
-            indexOfArray++;
+            saveValue += inputString + SPACE;
             countOfString++;
         } while (inputString.length() >= STOP_CONDITION4);
         String[] newInputUser = new String[countOfString];
-        for (int i = 0; i < newInputUser.length;i++){
-            newInputUser[i] = inputUser[i];
+        for (int i = 0; i < saveValue.length();i++){
+            if(saveValue.charAt(i) != SPACE){
+                getString += saveValue.charAt(i);
+            }else {
+                newInputUser[indexOfArray] = getString;
+                indexOfArray++;
+                getString = "";
+            }
+
         }
         return newInputUser;
     }
