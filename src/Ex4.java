@@ -1,9 +1,9 @@
 public class Ex4 {
     public static void main(String[] args) {
-        int[]arr = {8,3,5,4,6,7};
-        int[]arr1 = {14,13,12,11,10};
-        System.out.println(isFullArray(arr));
-        System.out.println(isFullArrayDescending(arr1));
+        int[]numbers1 = {8,3,5,4,6,7};
+        int[]numbers2 = {14,13,12,11,10};
+        System.out.println(isFullArray(numbers1));
+        System.out.println(isFullArrayDescending(numbers2));
     }
 
     public static boolean isFullArray(int[]arr){
