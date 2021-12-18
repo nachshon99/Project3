@@ -11,7 +11,14 @@ public class Ex9 {
     public static final int ADD_TO_RANDOM = 5;
     public static final int INITIALIZE = 0;
     public static final int COUNT_DIGIT = 1;
-
+    public static final int DIVIDING_FACTOR = 10;
+    public static final int START_RANDOM = 6;
+    public static final char ONE_CHAR = '1';
+    public static final char TWO_CHAR = '2';
+    public static final char THREE_CHAR = '3';
+    public static final char FOUR_CHAR = '4';
+    public static final char FIVE_CHAR = '5';
+    public static final char SIX_CHAR = '6';
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -69,7 +76,7 @@ public class Ex9 {
     public static int chooseOption(){
         Scanner scanner = new Scanner(System.in);
         int option;
-        int countOption = 0;
+        int countOption = INITIALIZE;
         do {
             System.out.println("Choose option: ");
             option = scanner.nextInt();
@@ -136,7 +143,7 @@ public class Ex9 {
         int digitOfCode;
         for (int i = 0; i < code.length;i++){
             do{
-                digitOfCode = random.nextInt(6)+1;
+                digitOfCode = random.nextInt(START_RANDOM)+MIN_OPTION;
             }while (isExistInArray(code,digitOfCode));
             code[i] = digitOfCode;
         }
@@ -145,25 +152,25 @@ public class Ex9 {
     // בודק אם הקוד נכון וכמה ניחושים מדוייקים וחלקיים
     public static boolean isCorrectGuess(int[]arr, int number){
         boolean correctGuess = false;
-        int countOfAccurate = 0;
-        int countOfPartialGuess = 0;
+        int countOfAccurate = INITIALIZE;
+        int countOfPartialGuess = INITIALIZE;
         for (int i = arr.length-1; i >= 0;i--){
-            if(number%10 == arr[i]){
+            if(number % DIVIDING_FACTOR == arr[i]){
                 countOfAccurate++;
 
 
             }else{
                 for (int j = arr.length-1; j >= 0;j--){
-                    if(number%10 == arr[j]){
+                    if(number % DIVIDING_FACTOR == arr[j]){
                         countOfPartialGuess++;
                         break;
                     }
 
                 }
             }
-            number /= 10;
+            number /= DIVIDING_FACTOR;
         }
-        if(countOfAccurate == 4){
+        if(countOfAccurate == MAX_OPTION){
             correctGuess = true;
             System.out.println("You win!");
         }else {
@@ -188,8 +195,8 @@ public class Ex9 {
         String guess = Integer.toString(number);
         for(int i = 0; i < guess.length(); i++){
 
-            if(guess.charAt(i) == '1' || guess.charAt(i) == '2' || guess.charAt(i) == '3' ||
-                    guess.charAt(i) == '4' || guess.charAt(i) == '5' || guess.charAt(i) == '6'){
+            if(guess.charAt(i) == ONE_CHAR || guess.charAt(i) == TWO_CHAR || guess.charAt(i) == THREE_CHAR ||
+                    guess.charAt(i) == FOUR_CHAR || guess.charAt(i) == FIVE_CHAR || guess.charAt(i) == SIX_CHAR){
                 outOfRange = false;
             }
             else {
