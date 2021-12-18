@@ -31,6 +31,10 @@ public class Ex7 {
             String[] quadraticEquation = splitByOperators(userInput);
             if (isCorrectInput(quadraticEquation)) {
                 a = Integer.parseInt(extractNumbers(quadraticEquation[0]));
+                if(a == 0){
+                    System.out.println("not correct");
+                    return;
+                }
                 b = Integer.parseInt(extractNumbers(quadraticEquation[1]));
                 c = Integer.parseInt(extractNumbers(quadraticEquation[2]));
                 calculateQuadraticEquation(a,b,c);
